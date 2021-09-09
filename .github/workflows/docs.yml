@@ -26,7 +26,7 @@ jobs:
           ./build_docs.sh
 
       - name: Deploy
-        if: github.event_name == 'push' && github.repository == 'etpalmer/AMReXTesting' && github.ref == 'refs/heads/main'
+        #if: github.event_name == 'push' && github.repository == 'etpalmer/AMReXTesting' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.DEPLOYTOKEN }}
