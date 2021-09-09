@@ -1,0 +1,122 @@
+Running Sphinx v4.0.2
+loading pickled environment... done
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 48 source files that are out of date
+updating environment: 0 added, 1 changed, 0 removed
+reading sources... [100%] index
+
+/home/erik/AMReX/AMReXTesting/Docs/sphinx_documentation/source/index.rst:77: WARNING: download file not readable: /home/erik/AMReX/AMReXTesting/Docs/sphinx_documentation/source/amrex.pdf
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [  2%] AMReX_Profiling_Tools
+writing output... [  4%] AMReX_Profiling_Tools_Chapter
+writing output... [  6%] AmrCore
+writing output... [  8%] AmrCore_Chapter
+writing output... [ 10%] AmrLevel
+writing output... [ 12%] AmrLevel_Chapter
+writing output... [ 14%] Basics
+writing output... [ 16%] Basics_Chapter
+writing output... [ 18%] BuildingAMReX
+writing output... [ 20%] BuildingAMReX_Chapter
+writing output... [ 22%] DualGrid
+writing output... [ 25%] EB
+writing output... [ 27%] EB_Chapter
+writing output... [ 29%] External_Frameworks_Chapter
+writing output... [ 31%] External_Profiling_Tools
+writing output... [ 33%] External_Profiling_Tools_Chapter
+writing output... [ 35%] ForkJoin
+writing output... [ 37%] Fortran
+writing output... [ 39%] Fortran_Chapter
+writing output... [ 41%] GPU
+writing output... [ 43%] GPU_Chapter
+writing output... [ 45%] GettingStarted
+writing output... [ 47%] GettingStarted_Chapter
+writing output... [ 50%] GridCreation
+writing output... [ 52%] IO
+writing output... [ 54%] IO_Chapter
+writing output... [ 56%] InputsCheckpoint
+writing output... [ 58%] InputsLoadBalancing
+writing output... [ 60%] InputsPlotFiles
+writing output... [ 62%] InputsProblemDefinition
+writing output... [ 64%] InputsTimeStepping
+writing output... [ 66%] Inputs_Chapter
+writing output... [ 68%] Introduction
+writing output... [ 70%] LinearSolvers
+writing output... [ 72%] LinearSolvers_Chapter
+writing output... [ 75%] LoadBalancing
+writing output... [ 77%] ManagingGridHierarchy_Chapter
+writing output... [ 79%] Particle
+writing output... [ 81%] Particle_Chapter
+writing output... [ 83%] Post_Processing
+writing output... [ 85%] Post_Processing_Chapter
+writing output... [ 87%] Regression_Testing_Chapter
+writing output... [ 89%] SUNDIALS_top
+writing output... [ 91%] SWFFT
+writing output... [ 93%] Testing
+writing output... [ 95%] Visualization
+writing output... [ 97%] Visualization_Chapter
+writing output... [100%] index
+
+generating indices... genindex done
+writing additional pages... search done
+copying images... [  1%] AmrCore/figs/Adv1.png
+copying images... [  3%] AmrCore/figs/Adv2.png
+copying images... [  5%] AmrCore/figs/Adv3.png
+copying images... [  7%] AmrCore/figs/Adv4.png
+copying images... [  9%] AmrCore/figs/Adv5.png
+copying images... [ 11%] AmrCore/figs/subcycling.png
+copying images... [ 13%] AmrCore/figs/flowchart.png
+copying images... [ 15%] Basics/amrgrids.png
+copying images... [ 17%] Basics/indextypes.png
+copying images... [ 19%] Basics/cc_validbox.png
+copying images... [ 21%] Basics/cc_tilebox.png
+copying images... [ 23%] Basics/ec_validbox.png
+copying images... [ 25%] Basics/ec_tilebox.png
+copying images... [ 27%] Basics/cc_growbox.png
+copying images... [ 29%] Basics/ec_growbox.png
+copying images... [ 31%] Basics/figs/flowchart.png
+copying images... [ 33%] EB/EB_example.png
+copying images... [ 35%] Profiling/figs/summary.png
+copying images... [ 37%] Profiling/figs/timings.png
+copying images... [ 39%] Profiling/figs/papi.png
+copying images... [ 41%] Profiling/figs/mpi.png
+copying images... [ 43%] Profiling/figs/msgsizes.png
+copying images... [ 45%] Profiling/figs/commtopo.png
+copying images... [ 47%] figs/fork_join_tasks.png
+copying images... [ 49%] figs/nested_fork_join_tasks.png
+copying images... [ 50%] GPU/gpu_2.png
+copying images... [ 52%] GPU/gpu_3.png
+copying images... [ 54%] GPU/Streams.png
+copying images... [ 56%] LinearSolvers/refluxfreecoarsefine.png
+copying images... [ 58%] Particle/particle_arrays.png
+copying images... [ 60%] Particle/neighbor_particles.png
+copying images... [ 62%] Particle/neighbor_list.png
+copying images... [ 64%] figs/ex_fsnapshot_resize.png
+copying images... [ 66%] SWFFT/figs/grid_4x4x4.png
+copying images... [ 68%] SWFFT/figs/grid_8x8x1.png
+copying images... [ 70%] SWFFT/figs/grid_2x2x2.png
+copying images... [ 72%] SWFFT/figs/grid_4x2x1.png
+copying images... [ 74%] SWFFT/figs/grid_1x4x2.png
+copying images... [ 76%] SWFFT/figs/grid_4x1x2.png
+copying images... [ 78%] Visualization/Amrvis_2d.png
+copying images... [ 80%] Visualization/Amrvis_3d.png
+copying images... [ 82%] Visualization/VisIt_2D.png
+copying images... [ 84%] Visualization/VisIt_3D.png
+copying images... [ 86%] Visualization/ParaView.png
+copying images... [ 88%] Visualization/ParaView_filegroup.png
+copying images... [ 90%] Visualization/ParaView_particles.png
+copying images... [ 92%] Visualization/yt_Nyx_density_slice.png
+copying images... [ 94%] Visualization/yt_Nyx_density_vol_rend.png
+copying images... [ 96%] Visualization/sensei_amrex_arch_sm_824.png
+copying images... [ 98%] Visualization/rt_2048_visit_000500.png
+copying images... [100%] Visualization/rt_2048_paraview_000500.png
+
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en)... done
+dumping object inventory... done
+build succeeded, 1 warning.
+
+The HTML pages are in build/html.
