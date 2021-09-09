@@ -29,8 +29,8 @@ jobs:
         if: github.event_name == 'push' && github.repository == 'etpalmer/AMReXTesting' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          GITHUB_TOKEN: ${{ secrets.DELPOYTOKEN }}
-          ACCESS_TOKEN: ${{ secrets.DELPOYTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEPLOYTOKEN }}
+          ACCESS_TOKEN: ${{ secrets.DEPLOYTOKEN }}
           REPOSITORY_NAME: etpalmer63/etpalmer63.github.io
           BRANCH: main # The branch the action should deploy to.
           FOLDER: build # The folder the action should deploy.
