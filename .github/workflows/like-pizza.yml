@@ -8,7 +8,8 @@ on:
 jobs:
   like-pizza:
     runs-on: ubuntu-latest
-    if: github.even.comment.body == 'I like pizza'
+      #if: ${{github.even.comment.body == 'I like pizza'}}
+    if: ${{1 == 1}}
     steps:
       - name: Like Pizza
         uses: actions/github-script@v4
