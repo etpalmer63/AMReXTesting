@@ -25,7 +25,7 @@ jobs:
       - name: trigger job
         uses: appleboy/gitlab-ci-action@master
         with: 
-          url: https://software.nersc.gov/epalmer/mirror-repo.git
+          host: https://software.nersc.gov/epalmer/mirror-repo.git
           token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
           debug: true
           project_id: 307
