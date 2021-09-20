@@ -24,7 +24,7 @@ jobs:
       #      });
       # pointless change
       - name: trigger job
-        with: 
+        run: 
           script:  |
             curl -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} \
                  https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
