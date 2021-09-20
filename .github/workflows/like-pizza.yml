@@ -24,10 +24,7 @@ jobs:
       #      });
       # pointless change
       - name: trigger job
-        uses: appleboy/gitlab-ci-action@master
         with: 
-          host: https://software.nersc.gov/api/v4/projects/307/ref/REF_NAME/trigger/pipeline?token=TOKEN
-          token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
-          debug: true
-          project_id: 307
-
+          script:  |
+            curl -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} \
+                 https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
