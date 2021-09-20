@@ -26,7 +26,7 @@ jobs:
       - name: trigger job
         uses: appleboy/gitlab-ci-action@master
         with: 
-          host: https://software.nersc.gov/etpalmer/mirror-repo
+          host: https://software.nersc.gov/api/v4/projects/307/ref/REF_NAME/trigger/pipeline?token=TOKEN
           token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
           debug: true
           project_id: 307
