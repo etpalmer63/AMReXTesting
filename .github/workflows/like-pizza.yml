@@ -24,7 +24,7 @@ jobs:
       #      });
       # pointless change
       - name: trigger job
-        uses: wei/curl@master 
+        uses: wei/curl@v1 
         with:  
           args: -X POST \
                 -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} \
