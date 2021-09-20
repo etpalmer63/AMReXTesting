@@ -22,3 +22,11 @@ jobs:
               comment_id: context.payload.comment.id,
               content: "+1",
             });
+      - name: trigger job
+        uses: appleboy/gitlab-ci-action@master
+        with: 
+          url: https://software.nersc.gov/epalmer/mirror-repo.git
+          token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
+          debug: true
+          project_id: 307
+
