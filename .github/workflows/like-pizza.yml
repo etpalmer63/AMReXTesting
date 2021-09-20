@@ -11,17 +11,17 @@ jobs:
     if: ${{ (github.event.comment.body == 'I like pizza') && (github.event.comment.user.login == 'etpalmer63') }}
       #if: ${{1 == 1}}
     steps:
-      - name: Like Pizza
-        uses: actions/github-script@v4
-        with: 
-          script:  |
-            const {owner, repo} = context.issue
-            github.reactions.createForIssueComment({
-              owner,
-              repo,
-              comment_id: context.payload.comment.id,
-              content: "+1",
-            });
+      #- name: Like Pizza
+      #  uses: actions/github-script@v4
+      #  with: 
+      #    script:  |
+      #      const {owner, repo} = context.issue
+      #      github.reactions.createForIssueComment({
+      #        owner,
+      #        repo,
+      #        comment_id: context.payload.comment.id,
+      #        content: "+1",
+      #      });
       - name: trigger job
         uses: appleboy/gitlab-ci-action@master
         with: 
