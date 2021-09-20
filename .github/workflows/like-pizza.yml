@@ -26,6 +26,7 @@ jobs:
       - name: trigger job
         uses: appleboy/gitlab-ci-action@master
         with: 
+          host: https://software.nersc.gov
           token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
           debug: true
           project_id: 307
