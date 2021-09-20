@@ -22,6 +22,7 @@ jobs:
       #        comment_id: context.payload.comment.id,
       #        content: "+1",
       #      });
+      # pointless change
       - name: trigger job
         uses: appleboy/gitlab-ci-action@master
         with: 
