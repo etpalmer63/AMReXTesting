@@ -9,22 +9,22 @@ jobs:
   like-pizza:
     runs-on: ubuntu-latest
     env:
-      AUTH_LIST: "etpalmer63"
+      AUTH_LIST: 'etpalmer63'
         #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
-    if: ${{ (github.event.comment.body == 'I like pizza') && contains( 'etpalmer63', 'etpalmer63') }}
+    if: ${{ (github.event.comment.body == 'I like cats') && contains( $AUTH_LIST, 'etpalmer63') }}
     steps:
-      #- name: Like Pizza
-      #  uses: actions/github-script@v4
-      #  with: 
-      #    script:  |
-      #      const {owner, repo} = context.issue
-      #      github.reactions.createForIssueComment({
-      #        owner,
-      #        repo,
-      #        comment_id: context.payload.comment.id,
-      #        content: "+1",
-      #      });
-      - name: trigger job
-        uses: wei/curl@v1 
-        with:  
-          args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
+      - name: Like Pizza
+        uses: actions/github-script@v4
+        with: 
+          script:  |
+            const {owner, repo} = context.issue
+            github.reactions.createForIssueComment({
+              owner,
+              repo,
+              comment_id: context.payload.comment.id,
+              content: "+1",
+            });
+      #- name: trigger job
+      #  uses: wei/curl@v1 
+      #  with:  
+      #    args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
