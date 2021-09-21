@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       USER_LIST: ${{ secrets.AUTH_LIST }} 
+      TRIGGER_STRING: 'I like strings'  
         #USER_LIST: 'JohnDoe etpalmer63 JaneDoe jmsexton03'
       #    #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
     steps:
       - name: Like Pizza
         #if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, github.event.comment.user.login) }}
-        if: ${{ (github.event.comment.body == 'I like cats') && contains( env.USER_LIST, github.event.comment.user.login) }}
+        #if: ${{ (github.event.comment.body == 'I like cats') && contains( env.USER_LIST, github.event.comment.user.login) }}
+        if: ${{ (github.event.comment.body == env.TRIGGER_STRING) && contains( env.USER_LIST, github.event.comment.user.login) }}
         uses: actions/github-script@v4
         with: 
           script:  |
