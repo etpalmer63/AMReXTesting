@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Like Pizza
         #if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, github.event.comment.user.login) }}
-        if: ${{ (github.event.comment.body == 'I like cats') && contains( secrets.AUTH_LIST, github.event.comment.user.login) }}
+        if: ${{ (github.event.comment.body == 'I like cats') && contains( ${{secrets.AUTH_LIST}}, github.event.comment.user.login) }}
         uses: actions/github-script@v4
         with: 
           script:  |
