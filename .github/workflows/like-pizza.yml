@@ -9,7 +9,7 @@ jobs:
   like-pizza:
     runs-on: ubuntu-latest
     env:
-      AUTH_LIST: 'JohnDoe etpalmer63 JaneDoe'
+      AUTH_LIST: 'JohnDoe etpalmer63 JaneDoe jmsexton03'
         #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
     steps:
       - name: Like Pizza
