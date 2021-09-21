@@ -8,12 +8,12 @@ on:
 jobs:
   like-pizza:
     runs-on: ubuntu-latest
-    env:
-      AUTH_LIST: 'JohnDoe etpalmer63 JaneDoe jmsexton03'
-        #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
+      #env:
+      #  AUTH_LIST: 'JohnDoe etpalmer63 JaneDoe jmsexton03'
+      #    #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
     steps:
       - name: Like Pizza
-        if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, github.event.comment.user.login) }}
+        if: ${{ (github.event.comment.body == 'I like cats') && contains( secrets.AUTH_LIST, github.event.comment.user.login) }}
         uses: actions/github-script@v4
         with: 
           script:  |
