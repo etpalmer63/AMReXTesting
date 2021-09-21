@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AUTH_LIST: etpalmer63
-    if: ${{ (github.event.comment.body == 'I like pizza') && contains( ${{AUTH_LIST}}, github.event.comment.user.login) }}
+    if: ${{ (github.event.comment.body == 'I like pizza') && contains( $AUTH_LIST, github.event.comment.user.login) }}
     steps:
       #- name: Like Pizza
       #  uses: actions/github-script@v4
