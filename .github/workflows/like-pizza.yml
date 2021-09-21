@@ -11,9 +11,9 @@ jobs:
     env:
       AUTH_LIST: etpalmer63
         #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
-    if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, 'etpalmer63') }}
     steps:
       - name: Like Pizza
+        if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, 'etpalmer63') }}
         uses: actions/github-script@v4
         with: 
           script:  |
