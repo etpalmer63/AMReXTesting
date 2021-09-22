@@ -28,7 +28,7 @@ jobs:
             #  comment_id: context.payload.comment.id,
             #  content: "+1",
             #});
-            github.reactions.createComment({
+            github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
