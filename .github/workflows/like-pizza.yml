@@ -31,5 +31,6 @@ jobs:
       - name: trigger job
         uses: wei/curl@v1 
         with:  
-          args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} https://software.nersc.gov/api/v4/projects/307/pipeline?ref=main
+          #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} https://software.nersc.gov/api/v4/projects/307/pipeline?ref=main
           #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
+          args: -X POST -F token=${{secrets.CORI_COMPILE}} -F ref=main https://software.nersc.gov/api/v4/projects/351/trigger/pipeline
