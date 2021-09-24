@@ -2,12 +2,17 @@ name: Hello
 
 on: [pull request]
 
+
+
+
 jobs:
+  variables: 
+    TEST_STRING: $(github.event.pull_request.head.ref) 
   build: 
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Merged PR
     - uses: actions/checkout@v2
     - run: |
-        echo $(github.event.pull_request.head.ref)
+        echo ${TEST_STRING}
 
