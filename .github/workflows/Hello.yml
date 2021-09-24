@@ -1,0 +1,13 @@
+name: Hello
+
+on: [pull request]
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Merged PR
+      uses: actions/checkout@v2
+      script: |
+        echo $(github.event.pull_request.head.ref)
+
