@@ -12,7 +12,7 @@ bash << EOF
     rm -rf git_source
     git init git_source
 
-    pushd source
+    pushd git_source
         git clone https://github.com/etpalmer63/amrex.git
 
         pushd amrex

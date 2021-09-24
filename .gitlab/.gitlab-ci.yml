@@ -1,7 +1,7 @@
 variables: 
     #SCHEDULER_PARAMETERS: "-C gpu -N 1 -t 00:10:00 -c 10 -G 1 -A m3767"
     #SCHEDULER_PARAMETERS: "-C haswell --qos shared -N 1 -n 4 -c 4 -A mp111 -t 00:02:00"
-    #Cori Compile
+    SOURCE_BRANCH: dummy_branch 
     SCHEDULER_PARAMETERS: "-M escori -q compile -n 16 -t 00:10:00"
 
 
@@ -29,6 +29,8 @@ clone_and_merge:
   extends: .ci-runner
   script: 
     - echo "This is where you clone and merge the source branch into main."
+    - ls -la
+    - PullAndMerge.bash
   interruptible: true
       
 
@@ -38,6 +40,7 @@ test:
     - .common_build
   script:
     - echo "This is where you compile things."
+    - ls -la 
     - cd git_source
     - ls -la 
   interruptible: true
