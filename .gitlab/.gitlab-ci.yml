@@ -30,7 +30,7 @@ clone_and_merge:
   script: 
     - echo "This is where you clone and merge the source branch into main."
     - ls -la
-    - bash PullAndMerge.bash
+    - bash .gitlab/PullAndMerge.bash
   interruptible: true
       
 
