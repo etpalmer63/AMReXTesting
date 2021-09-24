@@ -20,20 +20,15 @@ variables:
 
 
 stages: 
-  - pull
-  - merge
+  - clone_and_merge
   - test
 
-pull:
-  stage: pull
-  script: 
-    - echo "This is where you pull from GitHub."
-  interuptable: true
 
-merge:
-  stage: merge
+clone_and_merge:
+  stage: clone_and_merge
+  extends: .ci-runner
   script: 
-    - echo "This is where you merge branch into main."
+    - echo "This is where you clone and merge the source branch into main."
   interuptable: true
       
 
@@ -43,5 +38,7 @@ test:
     - .common_build
   script:
     - echo "This is where you compile things."
+    - cd git_source
+    - ls -la 
   interuptable: true
 
