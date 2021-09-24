@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Merged PR
-      uses: actions/checkout@v2
-      script: |
+    - uses: actions/checkout@v2
+    - run: |
         echo $(github.event.pull_request.head.ref)
 
