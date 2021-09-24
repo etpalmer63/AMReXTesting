@@ -16,7 +16,7 @@ variables:
     before_script:
         - module swap PrgEnv-intel PrgEnv-gnu
         - module load cray-fftw
-    interuptable: true    
+    interruptible: true    
 
 
 stages: 
@@ -29,7 +29,7 @@ clone_and_merge:
   extends: .ci-runner
   script: 
     - echo "This is where you clone and merge the source branch into main."
-  interuptable: true
+  interruptible: true
       
 
 test:
@@ -40,5 +40,5 @@ test:
     - echo "This is where you compile things."
     - cd git_source
     - ls -la 
-  interuptable: true
+  interruptible: true
 
