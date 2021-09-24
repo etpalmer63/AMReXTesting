@@ -1,0 +1,20 @@
+name: Mirror and run GitLab CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Mirror + trigger CI
+      uses: stenongithub/gitlab-mirror-and-ci-action@0.2.8
+      with:
+        args: "https://software.nersc.gov/epalmer/AMReX_CI"
+      env:
+        GITLAB_HOSTNAME: "software.nersc.gov"
+        GITLAB_USERNAME: "epalmer"
+        GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }} 
+        GITLAB_PROJECT_ID: "351"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        POLL_TIMEOUT: "300" 
