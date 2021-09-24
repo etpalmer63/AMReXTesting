@@ -11,7 +11,7 @@ jobs:
     - name: Mirror + trigger CI
       uses: stenongithub/gitlab-mirror-and-ci-action@0.2.8
       with:
-        args: "https://software.nersc.gov/epalmer/AMReX_CI github.payload.pull_request.head.ref"
+        args: "https://software.nersc.gov/epalmer/AMReX_CI github.event.pull_request.head.ref"
       env:
         GITLAB_HOSTNAME: "software.nersc.gov"
         GITLAB_USERNAME: "epalmer"
