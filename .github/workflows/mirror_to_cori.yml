@@ -1,20 +1,21 @@
 name: Mirror and run GitLab CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Merged PR
+      uses: actions/checkout@v2
     - name: Mirror + trigger CI
       uses: stenongithub/gitlab-mirror-and-ci-action@0.2.8
       with:
-        args: "https://software.nersc.gov/epalmer/AMReX_CI"
+        args: "https://software.nersc.gov/epalmer/AMReX_CI github.payload.pull_request.head.ref"
       env:
         GITLAB_HOSTNAME: "software.nersc.gov"
         GITLAB_USERNAME: "epalmer"
         GITLAB_PASSWORD: ${{ secrets.GITLAB_PAT }} 
         GITLAB_PROJECT_ID: "351"
         GITHUB_TOKEN: ${{ secrets.TOKEN_FOR_GITHUB }} 
-        POLL_TIMEOUT: "300" 
+        POLL_TIMEOUT: "30" 
