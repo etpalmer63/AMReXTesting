@@ -1,4 +1,7 @@
 hello:
   stage: first
+  tags: [cori]
+  variables: 
+    SCHEDULER_PARAMETERS: "-M escori -q compile -n 16 -t 00:10:00"
   script:
     - echo "HelloWorld"
