@@ -27,7 +27,7 @@ jobs:
               repo: context.repo.repo,
               body: 'Initiated Cori Compilation',
             });
-            echo ${{github.event.comment}}
+            echo ${github.event.ccmment.pullRequest}
 
       - name: trigger job
         uses: wei/curl@v1 
