@@ -21,7 +21,7 @@ jobs:
         uses: actions/github-script@v4
         with: 
           script:  |
-            echo $github.event.payload.node_id || echo $github.event.payload.number  
+            github.event.payload.node_id || github.event.payload.number  
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
