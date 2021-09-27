@@ -37,4 +37,6 @@ jobs:
 
       - name: output GitHub API
         uses: actions/github-script@v5
-        run: echo "${{ github.payload.issue.number }}"
+        with: 
+          script:  |
+            echo "${{ github.payload.issue.number }}"
