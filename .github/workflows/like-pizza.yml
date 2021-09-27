@@ -21,7 +21,6 @@ jobs:
         uses: actions/github-script@v4
         with: 
           script:  |
-            github.event.payload.node_id | jc -r 
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -35,3 +34,7 @@ jobs:
           #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} https://software.nersc.gov/api/v4/projects/307/pipeline?ref=main
           #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
           args: -X POST -F token=${{secrets.CORI_COMPILE}} -F ref=main https://software.nersc.gov/api/v4/projects/351/trigger/pipeline
+
+      - name: output GitHub API
+        uses: actions/github-script@v5
+        run: echo "${{ github.payload.node_id }}
