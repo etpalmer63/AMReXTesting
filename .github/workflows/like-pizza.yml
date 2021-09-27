@@ -36,4 +36,4 @@ jobs:
           args: -X POST -F token=${{secrets.CORI_COMPILE}} -F ref=main https://software.nersc.gov/api/v4/projects/351/trigger/pipeline
 
       - name: output GitHub API
-        run: echo "${{ github.event.comment.body }}"
+        run: echo "${{ github.event.payload.issue.number }}"
