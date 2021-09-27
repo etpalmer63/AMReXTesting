@@ -21,13 +21,13 @@ jobs:
         uses: actions/github-script@v4
         with: 
           script:  |
+            echo $github.event.payload.node_id || echo $github.event.payload.number  
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: 'Initiated Cori Compilation',
             });
-            echo $github.event.comment.pullRequest
 
       - name: trigger job
         uses: wei/curl@v1 
