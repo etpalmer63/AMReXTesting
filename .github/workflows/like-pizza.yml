@@ -37,5 +37,5 @@ jobs:
           args: curl -u etpalmer:$token https://api.github.com/repos/etpalmer63/AMReXTesting/pulls
       - name: output GitHub API
         uses: actions/github-script@v5
-        wtih: 
+        with: 
           script: echo "${{github.rest.event.payload.action}}"
