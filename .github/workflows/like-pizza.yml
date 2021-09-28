@@ -35,6 +35,7 @@ jobs:
           #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
           #args: -X POST -F token=${{secrets.CORI_COMPILE}} -F ref=main https://software.nersc.gov/api/v4/projects/351/trigger/pipeline
           args: curl -u etpalmer:$token https://api.github.com/repos/etpalmer63/AMReXTesting/pulls
+      - uses: actions/checkout@v2
       - name: output GitHub API
         run: .github/workflows/id_most_recent_comment_on_PR.sh
 
