@@ -10,8 +10,11 @@ sudo apt-get install -y --no-install-recommends\
   curl
 
 
-# indetify the most recent comment associated with a PR 
+# indetify the PR associated with second most recent comment 
 
-curl   -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/issues/comments?direction=desc | jq .[0]
+PR_NUMBER=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/events | jq .[1].payload.issue.number)
 
 
+# identify forked branch from which the 2nd most recent comment came 
+
+curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_NUMBER | jq .head.label
