@@ -17,4 +17,19 @@ PR_NUMBER=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.githu
 
 # identify forked branch from which the 2nd most recent comment came 
 
-curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_NUMBER | jq .head.label
+CONTENT=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_NUMBER) 
+
+
+REPO_URL=$(jq -r '.head.repo.html_url' <<< "${CONTENT}")
+
+SHA=$(jq -r '.head.sha' <<< "${CONTENT}")
+
+
+
+
+echo PR Number: $PR_NUMBER
+echo Repo: $REPO_URL
+echo sha: $SHA
+
+
+
