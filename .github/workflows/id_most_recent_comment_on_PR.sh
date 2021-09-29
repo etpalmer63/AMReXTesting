@@ -24,12 +24,24 @@ REPO_URL=$(jq -r '.head.repo.html_url' <<< "${CONTENT}")
 
 SHA=$(jq -r '.head.sha' <<< "${CONTENT}")
 
-
-
+PR_BRANCHNAME=$(jq -r '.head.ref' <<< "${CONTENT}")
 
 echo PR Number: $PR_NUMBER
+echo PR Branchname: $PR_BRANCHNAME
 echo Repo: $REPO_URL
 echo sha: $SHA
+
+#Trigger GitLab CI, pass variables
+
+curl -X POST\
+     -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} \
+     -F "ref=main" \
+     -F "variables[PR_NUMBER]=$PR_NUMBER" \
+     -F "variables[PR_BRANCHNAME]=$PR_BRANCHNAME" \
+     https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
+
+
+
 
 
 
