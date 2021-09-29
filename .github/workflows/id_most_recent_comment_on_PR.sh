@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 set -eu -o pipefail
 
 sudo apt-get update 
@@ -34,7 +33,7 @@ echo sha: $SHA
 #Trigger GitLab CI, pass variables
 
 curl -X POST\
-     -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} \
+     -F token=$1 \
      -F "ref=main" \
      -F "variables[PR_NUMBER]=$PR_NUMBER" \
      -F "variables[PR_BRANCHNAME]=$PR_BRANCHNAME" \

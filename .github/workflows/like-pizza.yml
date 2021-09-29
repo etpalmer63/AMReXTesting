@@ -37,5 +37,5 @@ jobs:
           args: curl -u etpalmer:$token https://api.github.com/repos/etpalmer63/AMReXTesting/pulls
       - uses: actions/checkout@v2
       - name: output GitHub API
-        run: .github/workflows/id_most_recent_comment_on_PR.sh
+        run: .github/workflows/id_most_recent_comment_on_PR.sh ${{secrets.GITLAB_TRIGGER_TOKEN}}
 
