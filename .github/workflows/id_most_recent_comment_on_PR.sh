@@ -31,9 +31,10 @@ echo Repo: $REPO_URL
 echo sha: $SHA
 
 #Trigger GitLab CI, pass variables
+# succeeds at command line
 
 curl -X POST\
-     -F token=$1 \
+     -F "token=$1" \
      -F "ref=main" \
      -F "variables[PR_NUMBER]=$PR_NUMBER" \
      -F "variables[PR_BRANCHNAME]=$PR_BRANCHNAME" \
