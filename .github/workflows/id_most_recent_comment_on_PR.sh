@@ -36,8 +36,8 @@ echo sha: $SHA
 curl -X POST\
      -F "token=$1" \
      -F "ref=main" \
-     -F "variables[PR_NUMBER]=$PR_NUMBER" \
-     -F "variables[PR_BRANCHNAME]=$PR_BRANCHNAME" \
+     -F "variables[PR_NUMBER]=${PR_NUMBER}" \
+     -F "variables[PR_BRANCHNAME]={$PR_BRANCHNAME}" \
      https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
 
 
