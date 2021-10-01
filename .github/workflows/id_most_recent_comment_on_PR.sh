@@ -11,22 +11,22 @@ sudo apt-get install -y --no-install-recommends\
 
 # indetify the PR associated with second most recent comment 
 
-PR_NUMBER=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/events | jq .[1].payload.issue.number)
+PR_ID=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/events | jq .[1].payload.issue.number)
 
 
 # identify forked branch from which the 2nd most recent comment came 
 
-CONTENT=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_NUMBER) 
+CONTENT=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_ID) 
 
 
 REPO_URL=$(jq -r '.head.repo.html_url' <<< "${CONTENT}")
 
 SHA=$(jq -r '.head.sha' <<< "${CONTENT}")
 
-PR_BRANCHNAME=$(jq -r '.head.ref' <<< "${CONTENT}")
+PR_BRANCH=$(jq -r '.head.ref' <<< "${CONTENT}")
 
-echo PR Number: $PR_NUMBER
-echo PR Branchname: $PR_BRANCHNAME
+echo PR ID Number: $PR_ID
+echo PR Branchname: $PR_BRANCH
 echo Repo: $REPO_URL
 echo sha: $SHA
 
@@ -36,8 +36,8 @@ echo sha: $SHA
 curl -X POST\
      -F "token=$1" \
      -F "ref=main" \
-     -F "variables[PR_NUMBER]=${PR_NUMBER}" \
-     -F "variables[PR_BRANCHNAME]=${PR_BRANCHNAME}" \
+     -F "variables[PR_ID]=${PR_ID}" \
+     -F "variables[PR_BRANCH]=${PR_BRANCH}" \
      https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
 
 
