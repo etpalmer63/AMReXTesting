@@ -8,13 +8,9 @@ on:
 jobs:
   like-pizza:
     runs-on: ubuntu-latest
-      #USER_LIST: ${{ secrets.AUTH_LIST }} 
-      #    #if: ${{ (github.event.comment.body == 'I like pizza') && contains( "etpalmer63", github.event.comment.user.login) }}
     if: ${{ (github.event.comment.body == 'I like strings') && contains( 'etpalmer63', github.event.comment.user.login) }}
     steps:
       - name: Like Pizza
-        #if: ${{ (github.event.comment.body == 'I like cats') && contains( env.AUTH_LIST, github.event.comment.user.login) }}
-        #if: ${{ (github.event.comment.body == 'I like cats') && contains( env.USER_LIST, github.event.comment.user.login) }}
         uses: actions/github-script@v4
         with: 
           script:  |
@@ -24,14 +20,6 @@ jobs:
               repo: context.repo.repo,
               body: 'Initiated Cori Compilation',
             });
-
-            #      - name: trigger job
-            #        uses: wei/curl@v1 
-            #        with:  
-            #          #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} https://software.nersc.gov/api/v4/projects/307/pipeline?ref=main
-            #          #args: -X POST -F token=${{secrets.GITLAB_TRIGGER_TOKEN}} -F ref=main https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
-            #          #args: -X POST -F token=${{secrets.CORI_COMPILE}} -F ref=main https://software.nersc.gov/api/v4/projects/351/trigger/pipeline
-            #          args: curl -u etpalmer:$token https://api.github.com/repos/etpalmer63/AMReXTesting/pulls
       - uses: actions/checkout@v2
       - name: output GitHub API
         run: .github/workflows/id_most_recent_comment_on_PR.sh ${{secrets.GITLAB_TRIGGER_TOKEN}}
