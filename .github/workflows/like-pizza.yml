@@ -1,4 +1,4 @@
-name: Like Pizza
+name: PR Comment Trigger
 
 on: 
   issue_comment:
@@ -6,10 +6,10 @@ on:
       - created
 
 jobs:
-  like-pizza:
+  comment-trigger:
     runs-on: ubuntu-latest
-    if: ${{ (github.event.comment.body == 'I like strings') && contains( 'etpalmer63', github.event.comment.user.login) }}
     steps:
+        if: ${{ (github.event.comment.body == 'I like strings') && contains( 'etpalmer63', github.event.comment.user.login) }}
       - name: Like Pizza
         uses: actions/github-script@v4
         with: 
@@ -20,6 +20,11 @@ jobs:
               repo: context.repo.repo,
               body: 'Initiated Cori Compilation',
             });
+
+   trigger-GitLab:
+     needs: comment-trigger
+     runs-on: ubuntu-latest
+     steps:
       - uses: actions/checkout@v2
       - name: output GitHub API
         run: .github/workflows/id_most_recent_comment_on_PR.sh ${{secrets.GITLAB_TRIGGER_TOKEN}}
