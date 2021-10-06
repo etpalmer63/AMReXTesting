@@ -25,11 +25,9 @@ jobs:
               repo: context.repo.repo,
               body: 'Initiated Cori Compilation',
             });
-
-  trigger-GitLab:
-    needs: comment-trigger
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: output GitHub API
+      - name: Checkout
+        if: ${{ (github.event.comment.body == env.TRIGGER_STRING) && contains( env.USER_LIST, github.event.comment.user.login) }}
+        uses: actions/checkout@v2
+      - name: Trigger GitHub Mirror
+        if: ${{ (github.event.comment.body == env.TRIGGER_STRING) && contains( env.USER_LIST, github.event.comment.user.login) }}
         run: .github/workflows/id_most_recent_comment_on_PR.sh ${{secrets.GITLAB_TRIGGER_TOKEN}}
