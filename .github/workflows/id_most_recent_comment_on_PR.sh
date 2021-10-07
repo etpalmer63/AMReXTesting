@@ -33,7 +33,7 @@ echo sha: $SHA
 #Trigger GitLab CI, pass variables
 # succeeds at command line
 
-curl -X POST\
+curl -s -X POST\
      -F "token=$1" \
      -F "ref=main" \
      -F "variables[PR_ID]=${PR_ID}" \
