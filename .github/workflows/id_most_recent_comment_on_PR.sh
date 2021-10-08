@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 GITHUB_EVENT_API_URL="https://api.github.com/repos/etpalmer63/AMReXTesting/events"
-GITHUB_PR_API_URL="https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/${PR_ID}"
+GITHUB_PR_API="https://api.github.com/repos/etpalmer63/AMReXTesting/pulls"
 MIRROR_TRIGGER_URL="https://software.nersc.gov/api/v4/projects/307/trigger/pipeline"
 
 
@@ -21,7 +21,7 @@ PR_ID=$(curl -H "Accept: application/vnd.github.v3+json" ${GITHUB_EVENT_API_URL}
 
 # identify forked branch from PR
 
-CONTENT=$(curl -H "Accept: application/vnd.github.v3+json" ${GITHUB_PR_API_URL})
+CONTENT=$(curl -H "Accept: application/vnd.github.v3+json" ${GITHUB_PR_API}/${PR_ID})
 
 
 PR_BRANCH=$(jq -r '.head.ref' <<< "${CONTENT}")
