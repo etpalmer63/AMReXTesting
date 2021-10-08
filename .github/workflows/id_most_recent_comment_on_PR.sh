@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 
+GITHUB_EVENT_API_URL="https://api.github.com/repos/etpalmer63/AMReXTesting/events"
+GITHUB_PR_API_URL="https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/${PR_ID}"
+MIRROR_TRIGGER_URL="https://software.nersc.gov/api/v4/projects/307/trigger/pipeline"
+
+
 set -eu -o pipefail
 
-sudo apt-get update 
+sudo apt-get update
 
 sudo apt-get install -y --no-install-recommends\
   jq   \
   curl
 
 
-# indetify the PR associated with second most recent comment 
+# indetify the PR associated with second most recent comment
 
-PR_ID=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/events | jq .[1].payload.issue.number)
+PR_ID=$(curl -H "Accept: application/vnd.github.v3+json" ${GITHUB_EVENT_API_URL} | jq .[1].payload.issue.number)
 
 
 # identify forked branch from PR
 
-CONTENT=$(curl -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/etpalmer63/AMReXTesting/pulls/$PR_ID) 
+CONTENT=$(curl -H "Accept: application/vnd.github.v3+json" ${GITHUB_PR_API_URL})
 
 
 PR_BRANCH=$(jq -r '.head.ref' <<< "${CONTENT}")
@@ -32,7 +37,7 @@ curl -s -X POST\
      -F "ref=main" \
      -F "variables[PR_ID]=${PR_ID}" \
      -F "variables[PR_BRANCH]=${PR_BRANCH}" \
-     https://software.nersc.gov/api/v4/projects/307/trigger/pipeline
+     ${MIRROR_TRIGGER_URL}
 
 
 
