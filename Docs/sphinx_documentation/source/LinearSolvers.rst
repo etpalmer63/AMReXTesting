@@ -109,11 +109,24 @@ and then we can use the ``MLMG`` member function
 
 to solve the problem given an initial guess and a right-hand side.
 Zero is a perfectly fine initial guess.  The two :cpp:`Reals` in the argument
+<<<<<<< HEAD
 list are the targeted relative and absolute error tolerances.
 The solver will terminate when one of these targets is met.
 Set the absolute tolerance to zero if one
 does not have a good value for it.  The return value of :cpp:`solve`
 is the max-norm error.
+=======
+list are the targeted relative and absolute error tolerances. The relative
+error tolerance is hard-coded to be at least :math:`10^{-16}`.
+Given the linear system :math:`Ax=b`, the solver will terminate when the
+max-norm of the residual (:math:`b-Ax`) is less than
+:cpp:`std::max(a_tol_abs, a_tol_rel*max_norm)` where :cpp:`max_norm`
+is the max-norm of the rhs, :math:`b`, if the flag :cpp:`always_use_bnorm` is
+set to True or if the rhs max-norm is greater than or equal to the max-norm error
+of the initial guess, otherwise :cpp:`max_norm` is equal to the max-norm error
+of the initial guess.  Set the absolute tolerance to zero if one does not have a
+good value for it.  The return value of :cpp:`solve` is the max-norm error.
+>>>>>>> development
 
 After the solver returns successfully, if needed, we can call
 
@@ -128,7 +141,11 @@ After the solver returns successfully, if needed, we can call
 to compute residual (i.e., :math:`f - L(\phi)`) given the solution and
 the right-hand side.  For cell-centered solvers, we can also call the
 following functions to compute gradient :math:`\nabla \phi` and fluxes
+<<<<<<< HEAD
 :math:`-B \nabla \phi`.
+=======
+:math:`-\beta \nabla \phi`.
+>>>>>>> development
 
 .. highlight:: c++
 
@@ -451,11 +468,19 @@ residual correction form of the original problem. To build Hypre, follow the nex
 
 To use hypre, one must include ``amrex/Src/Extern/HYPRE`` in the build system.
 For examples of using hypre, we refer the reader to
+<<<<<<< HEAD
 `ABecLaplacian`_ or `Nodal Projection EB`_.
 
 .. _`ABecLaplacian`: https://amrex-codes.github.io/amrex/tutorials_html/LinearSolvers_Tutorial.html
 
 .. _`Nodal Projection EB`: https://amrex-codes.github.io/amrex/tutorials_html/LinearSolvers_Tutorial.html
+=======
+`ABecLaplacian`_ or `NodeTensorLap`_.
+
+.. _`ABecLaplacian`: https://amrex-codes.github.io/amrex/tutorials_html/LinearSolvers_Tutorial.html
+
+.. _`NodeTensorLap`: https://amrex-codes.github.io/amrex/tutorials_html/LinearSolvers_Tutorial.html
+>>>>>>> development
 
 The following parameter should be set to True if the problem to be solved has a singular matrix.
 In this case, the solution is only defined to within a constant.  Setting this parameter to True
@@ -520,6 +545,7 @@ To use PETSc, one must include ``amrex/Src/Extern/PETSc``
 in the build system.  For an example of using PETSc, we refer the
 reader to the tutorial, `ABecLaplacian`_.
 
+<<<<<<< HEAD
 MAC Projection
 =========================
 
@@ -823,6 +849,8 @@ gradient term to make the vector field result satisfy the divergence constraint.
 
 See the `Nodal Projection EB`_ tutorial for the complete working example.
 
+=======
+>>>>>>> development
 Tensor Solve
 ============
 
@@ -974,6 +1002,7 @@ An example (implemented in the ``MultiComponent`` tutorial) might be:
   .. _fig::refluxfreecoarsefine:
 
   .. figure:: ./LinearSolvers/refluxfreecoarsefine.png
+<<<<<<< HEAD
       :height: 2cm
       :align: center
 
@@ -984,13 +1013,29 @@ An example (implemented in the ``MultiComponent`` tutorial) might be:
       and the first level of ghost nodes.
       Coarse nodes underneath level 2 ghost nodes are not updated.
       The remaining coarse nodes are updates by restriction.
+=======
+     :height: 4cm
+     :align: center
+
+     Reflux-free coarse-fine boundary update.
+     Level 2 ghost nodes (small dark blue) are interpolated from coarse boundary.
+     Level 1 ghost nodes are updated during the relaxation along with all the other interior fine nodes.
+     Coarse nodes (large blue) on the coarse/fine boundary are updated by restricting with interior nodes
+     and the first level of ghost nodes.
+     Coarse nodes underneath level 2 ghost nodes are not updated.
+     The remaining coarse nodes are updates by restriction.
+>>>>>>> development
 
   The MC nodal operator can inherit from the ``MCNodeLinOp`` class.
   ``Fapply``, ``Fsmooth``, and ``Fflux`` must update level 1 ghost nodes that are inside the domain.
   `interpolation` and `restriction` can be implemented as usual.
   `reflux` is a straightforward restriction from fine to coarse, using level 1 ghost nodes for restriction as described above.
 
+<<<<<<< HEAD
   See ``Tutorials/LinearSolvers/MultiComponent`` for a complete working example.
+=======
+See ``amrex-tutorials/ExampleCodes/LinearSolvers/MultiComponent`` for a complete working example.
+>>>>>>> development
 
 .. solver reuse
 

@@ -7,6 +7,7 @@ Amrvis
 ======
 
 Our favorite visualization tool is Amrvis. We heartily encourage you to build
+<<<<<<< HEAD
 the ``amrvis1d``, ``amrvis2d``, and ``amrvis3d`` executables, and to try using
 them to visualize your data. A very useful feature is View/Dataset, which
 allows you to actually view the numbers in a spreadsheet that is nested to
@@ -69,6 +70,107 @@ you can build into a pdf using pdflatex).
 #. Generally the plotfiles have the form pltXXXXX (the plt prefix can be
    changed), where XXXXX is a number corresponding to the timestep the file was
    output. ``amrvis2d <filename>`` or ``amrvis3d <filename>`` to see a single
+=======
+the ``amrvis1d``, ``amrvis2d``, and ``amrvis3d`` executables, and use
+them to visualize your data. A useful feature is ``View/Dataset``, which
+allows you to view data in a nested spreadsheet that
+reflects the AMR hierarchy -- this can be handy for debugging.
+Other display options include: the ability to select the number of levels of data to show,
+whether to display grid boxes, and to specify the color palette.
+Below are instructions and tips for using
+Amrvis. Additional information is contained in the document
+``Amrvis/Docs/Amrvis.tex`` (which can built into a ``pdf`` using ``pdflatex``).
+
+#. **Download and Build**:
+
+   Amrvis is available for download from the ``AMReX-Codes/Amrvis`` GitHub
+   repository. To download use,
+
+   .. code-block:: console
+
+       git clone https://github.com/AMReX-Codes/Amrvis
+
+   To build, ``cd`` into ``Amrvis/``, and edit ``GNUmakefile`` by setting the variable
+   ``COMP`` to your compiler suite.
+
+   Type ``make DIM=1``, ``make DIM=2``, or ``make DIM=3`` to build. The result is
+   an executable that looks like ``amrvis2d.<ver>.ex``.
+
+   |
+
+   *3D Data Visualization with Volpack*
+
+   If you want to build Amrvis with ``DIM=3`` for display of 3-dimensional data,
+   you must first download and build ``volpack``. This can be done by cloning
+   the repository:
+
+   .. code-block:: console
+
+       git clone https://ccse.lbl.gov/pub/Downloads/volpack.git
+
+   After downloading, ``cd`` into ``volpack/`` and type ``make``.
+
+   |
+
+   .. note::
+
+      Amrvis requires the OSF/Motif libraries and headers. If you don't have
+      these you will need to install the development version of motif through your
+      package manager.  ``lesstif`` gives some functionality and will allow you to
+      build the Amrvis executable, but Amrvis may exhibit subtle anomalies.
+
+      On most Linux distributions, the motif library is provided by the
+      ``openmotif`` package, and its header files (like ``Xm.h``) are provided by
+      ``openmotif-devel``. If those packages are not installed, then use the
+      OS-specific package management tool to install them.
+
+   |
+
+   .. note::
+
+       These instructions assume that the install directories
+       for Amrvis and volpack share the same parent directory. To install volpack
+       in a different location specify the location of volpack in Amrvis's
+       ``GNUmakefile`` by changing the variable ``VOLPACKDIR`` to the desired location.
+
+
+   |
+
+   After building you may want to create an alias for convenience.
+   To do this type,
+
+   .. code-block:: console
+
+       alias amrvis2d /tmp/Amrvis/amrvis2d.<ver>.ex
+
+   |
+
+#. **Configure**:
+
+   The settings for Amrvis are saved in the configuration file ``.amrvis.defaults`` in
+   your home directory. A default version of this file is available in the parent directory of the
+   Amrvis repo. Run the command ``cp Amrvis/amrvis.defaults ~/.amrvis.defaults`` to
+   copy it to your home directory. A color pallete is also available in the Amrvis directory as a file
+   named ``Palette``.
+   To configure Amrvis to use this pallete you can open the ``.amrvis.defaults`` file
+   in your home directory and edit the line containing ``palette`` to point to the
+   location of this file. For example,
+
+   ::
+
+      palette     ~/Amrvis/Palette
+
+   Other lines in ``.amrvis.defaults`` control options
+   such as the initial field to display, the number format, window size, etc.
+   If there are multiple instances of the same option, the last option takes
+   precedence.
+
+#. **Run**:
+
+   By default, the plotfiles are directories that have the form pltXXXXX,
+   where XXXXX is a number corresponding to the timestep that the file was
+   created. Use ``amrvis2d <filename>`` or ``amrvis3d <filename>`` to see a single
+>>>>>>> development
    plotfile, or for 2D data sets, ``amrvis2d -a plt*``, which will animate the
    sequence of plotfiles. FArrayBoxes and MultiFabs can also be viewed with the
    ``-fab`` and ``-mf`` options. When opening MultiFabs, use the name of the
@@ -79,6 +181,7 @@ you can build into a pdf using pdflatex).
    :math:`\rightarrow` "Dataset" in order to look at the actual numerical
    values (see :numref:`Fig:Amrvis`).  Or you can simply left
    click on a point to obtain the numerical value.  You can also export the
+<<<<<<< HEAD
    pictures in several different formats under "File/Export".  In 2D you can
    right and center click to get line-out plots.  In 3D you can right and
    center click to change the planes, and the hold shift+(right or center)
@@ -89,6 +192,22 @@ you can build into a pdf using pdflatex).
    hierarchical AMR data, each tends to have its own idiosyncrasies. If you
    would like to display the data in another format, please contact Marc Day
    (MSDay@lbl.gov) and we will point you to whatever we have that can help.
+=======
+   pictures in several different formats under ``File/Export``.  In 2D you can
+   right or center click to get line-out plots.  In 3D you can right or
+   center click to change the planes, and hold shift+(right or center)
+   click to get line-out plots.
+
+   |
+
+   We have created a number of routines to convert AMReX plotfile data to other
+   formats (such as Matlab), but in order to properly interpret the
+   hierarchical AMR data, each tends to require its own idiosyncrasies. If you
+   would like to display the data in another format, please leave a
+   message on `AMReX's GitHub Discussions page`_.
+
+.. _`AMReX's GitHub Discussions page`: https://github.com/AMReX-Codes/amrex/discussions
+>>>>>>> development
 
 .. |a| image:: ./Visualization/Amrvis_2d.png
        :width: 100%
@@ -98,7 +217,11 @@ you can build into a pdf using pdflatex).
 
 .. _Fig:Amrvis:
 
+<<<<<<< HEAD
 .. table:: 2D and 3D images generated using Amrvis
+=======
+.. table:: . 2D and 3D images generated using Amrvis.
+>>>>>>> development
    :align: center
 
    +-----+-----+
@@ -135,8 +258,13 @@ equation`).
 Next, download and install VisIt from
 https://wci.llnl.gov/simulation/computer-codes/visit.  To open a single
 plotfile, run VisIt, then select "File" :math:`\rightarrow` "Open file ...",
+<<<<<<< HEAD
 then select the Header file associated the the plotfile of interest (e.g.,
 plt00000/Header).  Assuming you ran the simulation in 2D, here are instructions
+=======
+then select the Header file associated with the plotfile of interest (e.g.,
+``plt00000/Header``).  Assuming you ran the simulation in 2D, here are instructions
+>>>>>>> development
 for making a simple plot:
 
 -  To view the data, select "Add" :math:`\rightarrow` "Pseudocolor"
@@ -190,7 +318,11 @@ done using the command:
 
 ::
 
+<<<<<<< HEAD
     ~/amrex/Tutorials/Basic/HeatEquation_EX1_C> ls -1 plt*/Header | tee movie.visit
+=======
+    ~/amrex-tutorials/ExampleCodes/Basic/HeatEquation_EX1_C> ls -1 plt*/Header | tee movie.visit
+>>>>>>> development
     plt00000/Header
     plt01000/Header
     plt02000/Header
@@ -209,6 +341,7 @@ then select movie.visit. Create an image to your liking and press the
 the movie, choose "File" :math:`\rightarrow` "Save movie ...", and follow the
 on-screen instructions.
 
+<<<<<<< HEAD
 Caveat:
 
 The Visit reader determines "Cycle" from the name of the plotfile (directory),
@@ -222,6 +355,19 @@ If you call it plt00100_old it will also correctly recognize and print Cycle: 10
 But, if you do not have "plt" followed immediately by the number,
 e.g. you name it pltx00100, then VisIt will not be able to correctly recognize
 and print the value for "Cycle".  (It will still read and display the data itself.)
+=======
+.. warning::
+
+    The Visit reader determines the value of ``Cycle`` from the name of the plotfile (directory),
+    specifically from the integer that follows the string "plt" in the plotfile name.
+    So if you call it ``plt00100``, ``myplt00100`` or ``this_is_my_plt00100`` then it will
+    correctly recognize and print ``Cycle: 100``.
+    If you call it ``plt00100_old`` it will also correctly recognize and print ``Cycle: 100``.
+
+    However, if you do not have ``plt`` followed immediately by the number,
+    e.g. you name it ``pltx00100``, then VisIt will not be able to correctly recognize
+    and print the value for ``Cycle``.  (It will still read and display the data itself.)
+>>>>>>> development
 
 .. _section-1:
 
@@ -275,6 +421,12 @@ To open a plotfile (for example, you could run the
 
    \end{center}
 
+<<<<<<< HEAD
+=======
+Building an Iso-surface
+-----------------------
+
+>>>>>>> development
 Note that Paraview is not able to generate iso-surfaces from cell centered data. To build an iso-surface (or iso-line in 2D):
 
 #. Perform a cell to node interpolation: "Filters" :math:`\rightarrow` "Alphabetical" :math:`\rightarrow` "Cell Data to Point Data".
@@ -282,6 +434,12 @@ Note that Paraview is not able to generate iso-surfaces from cell centered data.
 #. Use the "Contour" icon (next to the calculator) to select the data from which to build the contour ("Contour by"), enters the iso-surfaces
    values and click "Apply".
 
+<<<<<<< HEAD
+=======
+Visualizing Particle Data
+-------------------------
+
+>>>>>>> development
 To visualize particle data within plofile directories (for example, you could
 run the `NeighborList`_ example in `Tutorials/Particles`_):
 
@@ -345,6 +503,53 @@ Once you have loaded an AMReX plotfile time series (fluid and/or particles), you
 
 #. Adjust the resolution, compression and framerate, and click "OK"
 
+<<<<<<< HEAD
+=======
+Plot a Vector Field
+-------------------
+
+Paraview can be used to plot a vector field from AMR plotfile data. In this example
+we will assume a single vector has been stored as three separate variables,
+``V_x``, ``V_y`` and ``V_z``. The steps below outline a basic construction:
+
+#. Open a plotfile or plotfile group, using ``File`` :math:`\rightarrow` ``Open``.
+   A pop-up will appear, select "AMReX/Boxlib Grid Reader".
+
+#. Select the plotfile or group in the Pipeline Browser. The Cell Array Status
+   window of the Properties should populate with the values ``V_x``, ``V_y``
+   and ``V_z``. Select these values and click apply.
+
+#. Select the Cell Centers filter from ``Filters`` :math:`\rightarrow` ``Alphabetical``
+   :math:`\rightarrow` ``Cell Centers`` and apply.
+
+#. Next we'll define a vector variable using the Calculator filter. Select
+   ``Filters`` :math:`\rightarrow` ``Alphabetical`` :math:`\rightarrow` ``Calculator``.
+   Under the Properties heading, set the Attribute Type to Point Data. The
+   Result Array Name is the name of the vector value we will create. In the
+   line below that we define a new vector value with the equation:
+   ``V_x*iHat + V_y*jHat + V_z*kHat``
+   Note that, the values ``V_x``, ``V_y`` and ``V_z``, should be selectable
+   from the dropdown Scalars menu. Apply the filter.
+
+#. To plot the arrows, select the Glyph filter,
+   ``Filters`` :math:`\rightarrow` ``Alphabetical`` :math:`\rightarrow` ``Glyph``.
+   Under the heading, Glyph Source, select ``Arrow``. Under Orientation, select
+   the name of the vector value created in the last step. The default name is
+   ``Result``. Apply the filter to display the vector field.
+
+   One may want to adjust the appearance of the vector field by scaling each vector
+   by its magnitude. To do this, look under the Scale heading, select the
+   vector value as the Scale Array and select Scale by Magnitude.
+
+   To adjust the number and location of vectors displayed, one may alter the
+   settings under the Masking heading.
+
+.. figure:: ./Visualization/ParaView_vectorfield.png
+   :width: 3.1in
+
+   Vector Field generated with ParaView
+
+>>>>>>> development
 
 .. _section-2:
 
@@ -869,7 +1074,12 @@ simulation will periodically write images during the run.
    ssh cori.nersc.gov
    cd $SCRATCH
    git clone https://github.com/AMReX-Codes/amrex.git
+<<<<<<< HEAD
    cd amrex/Tutorials/Amr/Advection_AmrLevel/Exec/SingleVortex
+=======
+   git clone https://github.com/AMReX-Codes/amrex-tutorials.git
+   cd amrex-tutorials/ExampleCodes/Amr/Advection_AmrLevel/Exec/SingleVortex
+>>>>>>> development
    module use /usr/common/software/sensei/modulefiles
    module load sensei/2.1.0-catalyst-shared
    source sensei_config
@@ -880,7 +1090,11 @@ simulation will periodically write images during the run.
    # sensei.enabled=1
    # sensei.config=sensei/render_iso_catalyst_2d.xml
    salloc -C haswell -N 1 -t 00:30:00 -q debug
+<<<<<<< HEAD
    cd $SCRATCH/amrex/Tutorials/Amr/Advection_AmrLevel/Exec/SingleVortex
+=======
+   cd $SCRATCH/amrex-tutorials/ExampleCodes/Amr/Advection_AmrLevel/Exec/SingleVortex
+>>>>>>> development
    ./main2d.gnu.haswell.MPI.ex inputs
 
 
@@ -894,7 +1108,12 @@ simulation will periodically write images during the run.
    ssh cori.nersc.gov
    cd $SCRATCH
    git clone https://github.com/AMReX-Codes/amrex.git
+<<<<<<< HEAD
    cd amrex/Tutorials/Amr/Advection_AmrLevel/Exec/SingleVortex
+=======
+   git clone https://github.com/AMReX-Codes/amrex-tutorials.git
+   cd amrex-tutorials/ExampleCodes/Amr/Advection_AmrLevel/Exec/SingleVortex
+>>>>>>> development
    module use /usr/common/software/sensei/modulefiles
    module load sensei/2.1.0-libsim-shared
    source sensei_config
@@ -905,5 +1124,9 @@ simulation will periodically write images during the run.
    # sensei.enabled=1
    # sensei.config=sensei/render_iso_libsim_2d.xml
    salloc -C haswell -N 1 -t 00:30:00 -q debug
+<<<<<<< HEAD
+=======
+   cd $SCRATCH/amrex-tutorials/ExampleCodes/Amr/Advection_AmrLevel/Exec/SingleVortex
+>>>>>>> development
    ./main2d.gnu.haswell.MPI.ex inputs
 

@@ -3,8 +3,14 @@
 Building AMReX
 ===================
 
+<<<<<<< HEAD
 In this chapter, we discuss AMReX's build systems.  Additionally, it
 is also possible to install AMReX using spack (https://spack.io/).
+=======
+In this chapter, we discuss AMReX's build systems. Additionally, it
+is also possible to install AMReX using Spack (https://spack.io/).
+For more information see the :ref:`sec:build:spack` section.
+>>>>>>> development
 
 There are three ways to use AMReX's build systems. Most AMReX
 developers use GNU Make. With this approach, there is no installation

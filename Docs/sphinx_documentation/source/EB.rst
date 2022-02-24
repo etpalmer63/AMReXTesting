@@ -5,6 +5,7 @@
    :language: fortran
 
 
+<<<<<<< HEAD
 .. _sec:EB:EBOverview:
 
 Overview of Embedded Boundary Description
@@ -61,6 +62,8 @@ systems. We also give examples of how to initialize the geometry data
 structures and access them to build the numerical difference
 operators.  Finally we present EB support of linear solvers.
 
+=======
+>>>>>>> development
 .. _sec:EB:ebinit:
 
 Initializing the Geometric Database
@@ -288,8 +291,13 @@ building the :cpp:`MultiFab`. Using :cpp:`dynamic_cast`, we can test whether a
         // regular FabFactory<FArrayBox>
     }
 
+<<<<<<< HEAD
 EB Data
 =======
+=======
+Embedded Boundary Data
+======================
+>>>>>>> development
 
 Through member functions of :cpp:`EBFArrayBoxFactory`, we have access to the
 following data:
@@ -316,12 +324,50 @@ following data:
     // face centroid
     Array<const MultiCutFab*,AMREX_SPACEDIM> getFaceCent () const;
 
+<<<<<<< HEAD
 Volume fraction is in a single-component :cpp:`MultiFab`, and it is zero for
 covered cells, one for regular cells, and in between for cut cells. Centroid is
 in a :cpp:`MultiCutFab` with ``AMREX_SPACEDIM`` components with each component
 of the data is in the range of :math:`[-0.5,0.5]`. The centroid is based on each
 cell's local coordinates with respect to the embedded boundary. A
 :cpp:`MultiCutFab` is very similar to a :cpp:`MultiFab`. Its data can be
+=======
+- **Volume fraction** is in a single-component :cpp:`MultiFab`. Data are in the range
+  of :math:`[0,1]` with zero representing covered cells and one for regular
+  cells.
+
+- **Volume centroid** (also called cell centroid) is
+  in a :cpp:`MultiCutFab` with ``AMREX_SPACEDIM`` components. Each component
+  of the data is in the range of :math:`[-0.5,0.5]`, based on each
+  cell's local coordinates with respect to the regular cell's center.
+
+- **Boundary centroid** is also in a :cpp:`MultiCutFab` with
+  ``AMREX_SPACEDIM`` components.  Each component
+  of the data is in the range of :math:`[-0.5,0.5]`, based on each
+  cell's local coordinates with respect to the regular cell's center.
+
+- **Face centroid** is in a :cpp:`MultiCutFab` with ``AMREX_SPACEDIM`` components.
+  Each component of the data is in the range of :math:`[-0.5,0.5]`, based on
+  each cell's local coordinates with respect to the embedded boundary.
+
+- **Area fractions** are returned in an :cpp:`Array` of :cpp:`MultiCutFab`
+  pointers. For each direction, area fraction is for the face of that direction.
+  Data are in the range of :math:`[0,1]` with zero representing a covered face
+  and one an un-cut face.
+
+- **Face centroids** are returned in an :cpp:`Array` of :cpp:`MultiCutFab`
+  pointers. There are two components for each direction and the
+  ordering is always the same as the original ordering of the coordinates. For
+  example, for :math:`y` face, the component 0 is for :math:`x` coordinate and 1
+  for :math:`z`. The coordinates are in each face's local frame normalized to the
+  range of :math:`[-0.5,0.5]`.
+
+
+Embedded Boundary Data Structures
+=================================
+
+A :cpp:`MultiCutFab` is very similar to a :cpp:`MultiFab`. Its data can be
+>>>>>>> development
 accessed with subscript operator
 
 .. highlight: c++
@@ -335,6 +381,7 @@ just like :cpp:`FArrayBox`. The difference between :cpp:`MultiCutFab` and
 :cpp:`MultiFab` is that to save memory :cpp:`MultiCutFab` only has data on boxes
 that contain cut cells. It is an error to call :cpp:`operator[]` if that box
 does not have cut cells. Thus the call must be in a :cpp:`if` test block (see
+<<<<<<< HEAD
 section :ref:`sec:EB:flag`). Boundary centroid is also a :cpp:`MultiCutFab` with
 ``AMREX_SPACEDIM`` components, and it uses each cell's local coordinates. Area
 fractions and face centroids are returned in :cpp:`Array` of :cpp:`MultiCutFab`
@@ -344,6 +391,9 @@ ordering is always the same as the original ordering of the coordinates. For
 example, for :math:`y` face, the component 0 is for :math:`x` coordinate and 1
 for :math:`z`. The coordinates are in each face's local frame normalized to the
 range of :math:`[-0.5,0.5]`.
+=======
+section :ref:`sec:EB:flag`).
+>>>>>>> development
 
 .. _sec:EB:flag:
 
