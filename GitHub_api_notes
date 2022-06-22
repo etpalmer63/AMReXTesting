@@ -1,0 +1,42 @@
+
+
+
+
+# First list pull requests.
+
+gh api repos/AMReX-Codes/amrex/pulls
+
+From this you can pull the PR number under "number"
+
+Then you can check the "forks_url:"
+
+"forks_url": "https://api.github.com/repos/etpalmer63/amrex/forks:"
+
+strip the user name and repository
+
+gh api repos/AMReX-Codes/amrex/pulls/2354 | jq .head.repo.url
+
+
+head branch is what's being merged into base.
+
+
+To get most recent pull
+
+gh api repos/AMReX-Codes/amrex/pulls/2354
+
+gh api repos/AMReX-Codes/amrex/pulls/2354 | jq.head.label
+
+
+Still need to get issue number from a comment
+
+Check the most recent comment.
+
+gh api repos/AMReX-Codes/amrex/issues/comments | jq .[0].issue_url
+
+Then strip the number?
+
+Seems like the way forward is just to curl for all api information. 
+
+
+
+

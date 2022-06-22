@@ -47,7 +47,11 @@ cell-centered velocity.
 
 The tutorials in `Linear Solvers`_ show examples of
 using the solvers.  The tutorial
+<<<<<<< HEAD
 ``amrex/Tutorials/Basic/HeatEquation_EX3_C`` shows how to solve the
+=======
+``amrex-tutorials/ExampleCodes/Basic/HeatEquation_EX3_C`` shows how to solve the
+>>>>>>> development
 heat equation implicitly using the solver.  The tutorials also show
 how to add linear solvers into the build system.
 

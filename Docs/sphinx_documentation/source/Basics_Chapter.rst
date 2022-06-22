@@ -8,7 +8,11 @@ codes are in ``amrex/Src/Base/``. Note that AMReX classes and functions are in
 namespace ``amrex``. For clarity, we usually drop ``amrex::`` in the example
 codes here. It is also assumed that headers have been properly included. We
 recommend you study the tutorial in
+<<<<<<< HEAD
 ``amrex/Tutorials/Basic/HeatEquation_EX1_C`` while reading this chapter.  After
+=======
+``amrex-tutorials/ExampleCodes/Basic/HeatEquation_EX1_C`` while reading this chapter.  After
+>>>>>>> development
 reading this chapter, one should be able to develop single-level parallel codes
 using AMReX. It should also be noted that this is not a comprehensive reference
 manual.

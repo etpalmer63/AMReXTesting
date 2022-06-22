@@ -11,6 +11,11 @@ cd ../..
 cd Docs/sphinx_documentation
 
 echo "Build the Sphinx documentation for Amrex."
+<<<<<<< HEAD
+=======
+make PYTHON="python3" latexpdf
+mv build/latex/amrex.pdf source/
+>>>>>>> development
 make PYTHON="python3" html &> make_source_html.out
 cd ../../
 
@@ -23,6 +28,11 @@ mkdir -p docs_html/doxygen
 cp -rp ../Docs/Doxygen/html/* docs_html/doxygen/
 mkdir -p docs_xml/doxygen
 cp -rp ../Docs/Doxygen/xml/* docs_xml/doxygen/
+<<<<<<< HEAD
+=======
+# add tagfile to allow other docs to interlink with amrex
+cp ../Docs/Doxygen/amrex-doxygen-web.tag.xml docs_xml/doxygen/.
+>>>>>>> development
 
 # add sphinx
 cp -rp ../Docs/sphinx_documentation/build/html/* docs_html/
